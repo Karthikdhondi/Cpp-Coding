@@ -1,0 +1,47 @@
+Polymorphism means many Forms.
+
+A set of code behaves differently in different context then we call it Polymorphism.
+
+Basically polymorphism is of two types:
+    1. Compile Time polymorphism
+    2. Run Time Polymorphism
+
+
+1. Compile Time Polymorphism:
+    It can be acheived by the 
+        a). Function Overloading (or) Operator overloading 
+        b). Fuction Overriding (or) Method Overriding
+    
+
+    Function Overloading means we can have different fuctions with same name but there is a structural difference 
+    Example:
+        #include<iostream>
+        using namespace std;
+
+        int test(int a, int b){
+
+        }
+
+        int test(int a){
+            
+        }
+
+        int test(){
+
+        }
+
+        int main(){
+            
+        }
+
+        Here test() is have multiple funtions with same name but there is some difference in it. 
+
+NOTE:
+   But we "cannot diffentiate" two funtions with "return type" as to show funtion overloading. It will give "error" 
+
+   EXample: 
+          int test (){                      |           void test(){
+                                            |
+            }                               |               }
+           
+           as we see, above both "cannot diffentiate" two funtions with "return type".
