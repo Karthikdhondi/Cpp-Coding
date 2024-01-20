@@ -181,6 +181,60 @@ BinaryTreeNode<int>* buildTreeUsingPreIn(int* inorder,int* preorder,int size){
 }
 
 
+int height(BinaryTreeNode<int>* root){
+    if(root == NULL){
+        return 0;
+    }
+    return 1 + max(height(root->left), height(root->right));
+}
+
+//Time complexity of the this is Bestcase is O(nlogn), WorstCase is O(n^2), 
+//otherwise we can write it as O(n*h)...here h is height of the tree, it depends on the type of tree. 
+int diameter(BinaryTreeNode<int>* root){
+    if(root == NULL){ 
+        return 0;
+    }
+    int option1 = height(root->left) + height(root->right);
+    int option2 = diameter(root->left);
+    int option3 = diameter(root->right);
+    return max(option1, max(option2, option3));
+
+}
+
+/*
+Time complexity of the heightDiameter() is O(n).
+
+The heightDiameter is the best solution for trees. 
+We use this in multiple places. 
+
+*/
+//pair is a templet
+pair<int, int> heightDiameter(BinaryTreeNode<int>* root){
+    if(root == NULL){
+        pair<int,int> p;
+        p.first = 0;
+        p.second = 0;
+
+        return p;
+    }
+    pair<int,int> leftAns = heightDiameter(root->left);
+    pair<int,int> rightAns = heightDiameter(root->right);
+
+    int ld = leftAns.second;
+    int lh = leftAns.first;
+    int rd = rightAns.second;
+    int rh = rightAns.first;
+
+    int height = 1 + max(lh, rh);
+    int diameter = max(lh + rh, max(ld,rd));
+    pair<int,int> p;
+    p.first = height;
+    p.second = diameter;
+    return p;
+    
+
+}
+
 
 //Input Binary Tree: 1 2 3 4 5 6 7 -1 -1 8 9 -1 -1 -1 -1 -1 -1 -1 -1
 int main(){
